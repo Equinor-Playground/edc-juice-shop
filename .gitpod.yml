@@ -1,13 +1,17 @@
----
-# List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
-tasks:
-  - name: Init docker for juice shop
-    init: docker pull bkimminich/juice-shop
-    command: docker run --rm -p 3000:3000 bkimminich/juice-shop      
+image:
+  file: Dockerfile
 
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
+tasks:
+  - name: Fetch juice shop and run it
+    init: |
+      docker pull bkimminich/juice-shop
+    command: |
+      docker run --rm -p 3000:3000 bkimminich/juice-shop
+
 ports:
-  - port: 3000
-    onOpen: ignore
+  - name: juice-shop
+    description: The web app juice-shop
+    port: 3000
     visibility: private
-    name: juice-shop
+    onOpen: open-preview
+
