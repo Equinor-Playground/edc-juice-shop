@@ -6,7 +6,7 @@ tasks:
     init: |
       docker pull bkimminich/juice-shop
     command: |
-      docker run --rm -p 3000:3000 bkimminich/juice-shop
+      docker run --rm -it --env "NODE_ENV=unsafe" -p 3000:3000 bkimminich/juice-shop
 
 ports:
   - name: juice-shop
